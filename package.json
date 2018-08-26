@@ -14,7 +14,8 @@
     }
   ],
   "scripts": {
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
+    "build:watch": "NODE_ENV=development webpack -w --progress",
     "format": "prettier --write '{source,test}/**/*.js'",
     "generate:archive": "node scripts/generate_test_archive.js",
     "generate:docs": "run-p generate:docs:node generate:docs:web",

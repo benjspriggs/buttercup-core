@@ -4,6 +4,7 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 const { DefinePlugin } = webpack;
 
+const ENV = process.env.NODE_ENV || "production";
 const WEB_ENTRY = path.resolve(__dirname, "./source/web/index.js");
 const DIST = path.resolve(__dirname, "./dist");
 
@@ -47,7 +48,7 @@ const baseConfig = {
 
 };
 
-module.exports = [
+const configs = [
     baseConfig,
     Object.assign({}, baseConfig, {
         output: Object.assign({}, baseConfig.output, {
@@ -59,3 +60,7 @@ module.exports = [
         ]
     })
 ];
+
+module.exports = ENV === "production"
+    ? configs
+    : baseConfig;
