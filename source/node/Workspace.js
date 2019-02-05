@@ -156,6 +156,12 @@ class Workspace {
         return this.saveChannel.enqueue(
             () =>
                 this.datasource.save(this.archive.getHistory(), this.masterCredentials).then(() => {
+                    // check if there are any other saves happening
+                    // if (noSaves) {
+                    // do the save
+                    // } else {
+                    // queue another save (use the queue channel)
+                    // }
                     this.archive._getWestley().clearDirtyState();
                 }),
             /* priority */ undefined,
