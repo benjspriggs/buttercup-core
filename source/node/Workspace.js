@@ -157,6 +157,7 @@ class Workspace {
             () =>
                 this.datasource.save(this.archive.getHistory(), this.masterCredentials).then(() => {
                     // check if there are any other saves happening
+                    const noSaves = this.saveChannel.isEmpty();
                     // if (noSaves) {
                     // do the save
                     // } else {
